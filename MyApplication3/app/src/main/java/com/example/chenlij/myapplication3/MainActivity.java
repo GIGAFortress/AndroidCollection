@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +92,10 @@ public class MainActivity extends AppCompatActivity
             }
         };
         viewPager.setAdapter(pagerAdapter);
+    }
+
+    public void showToast(View view){
+        Toast.makeText(this, "SHOWTOAST", 500).show();
     }
 
     @Override
