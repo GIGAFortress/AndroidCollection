@@ -1,11 +1,17 @@
 package com.example.chenlij.myapplication3;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,6 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +31,65 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public TextView textViewC21;
+    public TextView textViewC11;
+    private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    private List<BluetoothDeviceContext> discoveryDevices = new ArrayList<BluetoothDeviceContext>();
+
+    private final BroadcastReceiver discoveryReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            short RSSI = 0;
+            if(BluetoothDevice.ACTION_FOUND.equals(action)){
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
+                    RSSI = intent.getExtras().getShort(BluetoothDevice.EXTRA_RSSI);
+                }
+                BluetoothDeviceContext btContext = new BluetoothDeviceContext
+                        (device.getName() == null ? device.getAddress() : device.getName(), device.getAddress(), RSSI);
+                discoveryDevices.add(btContext);
+                textViewC21.setText("");
+                textViewC21.append("\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
+                Log.d("B","\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
+            }
+        }
+    };
+
+    public void startDiscovery(View view){
+        if(bluetoothAdapter.isEnabled()){
+            if(discoveryDevices != null){
+                discoveryDevices.clear();
+            }
+            Toast.makeText(MainActivity.this, "startDiscovery", Toast.LENGTH_SHORT).show();
+            bluetoothAdapter.startDiscovery();
+            new Thread( new Runnable(){
+                @Override
+                public void run() {
+                    try{
+                        Thread.sleep(3000);
+                    } catch(InterruptedException e){
+
+                    } finally{
+                        bluetoothAdapter.cancelDiscovery();
+                    }
+                }
+            }).start();
+        }
+    }
+
+    private class BluetoothDeviceContext{
+        public String name = "";
+        public String address = "";
+        public short RSSI = 0;
+
+        BluetoothDeviceContext(String name, String address, short RSSI) {
+            this.name = name;
+            this.address = address;
+            this.RSSI = RSSI;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +117,13 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         initializedView();
+        registerBluetoothListener();
     }
 
+    private void registerBluetoothListener() {
+        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        registerReceiver(discoveryReceiver, filter);
+    }
 
     private void initializedView() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager1);
@@ -61,6 +132,8 @@ public class MainActivity extends AppCompatActivity
         LayoutInflater lf = getLayoutInflater().from(this);
         view1 = lf.inflate(R.layout.content_1, null);
         view2 = lf.inflate(R.layout.content_2, null);
+        textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
+        textViewC11 = (TextView) view1.findViewById(R.id.textViewC11);
         final List<View> listviews = new ArrayList<View>();
         listviews.add(view1);
         listviews.add(view2);
@@ -94,8 +167,15 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(pagerAdapter);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(discoveryReceiver);
+    }
+
     public void showToast(View view){
-        Toast.makeText(this, "SHOWTOAST", 500).show();
+        Toast.makeText(this, "SHOWTOAST", Toast.LENGTH_SHORT).show();
+        textViewC11.setText("Test?!");
     }
 
     @Override
@@ -139,11 +219,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_slideshow) {
-
+            Toast.makeText(this, "slideshow", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_manage) {
-
+            Toast.makeText(this, "manage", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

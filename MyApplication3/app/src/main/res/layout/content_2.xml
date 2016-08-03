@@ -3,8 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTENT_2"/>
+        android:text="搜索蓝牙"
+        android:onClick="startDiscovery"/>
+
+    <TextView
+        android:id="@+id/textViewC21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sample"/>
 </LinearLayout>
