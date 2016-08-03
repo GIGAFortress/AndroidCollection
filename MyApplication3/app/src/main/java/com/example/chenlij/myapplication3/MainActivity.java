@@ -1,8 +1,12 @@
 package com.example.chenlij.myapplication3;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +48,49 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initializedView();
+    }
+
+
+    private void initializedView() {
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager1);
+        View view1 = findViewById(R.layout.content_1);
+        View view2 = findViewById(R.layout.content_2);
+        LayoutInflater lf = getLayoutInflater().from(this);
+        view1 = lf.inflate(R.layout.content_1, null);
+        view2 = lf.inflate(R.layout.content_2, null);
+        final List<View> listviews = new ArrayList<View>();
+        listviews.add(view1);
+        listviews.add(view2);
+        PagerAdapter pagerAdapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return 2;
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return view == object;
+            }
+
+            @Override
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                container.removeView(listviews.get(position));
+            }
+
+            @Override
+            public int getItemPosition(Object object) {
+                return super.getItemPosition(object);
+            }
+
+            @Override
+            public Object instantiateItem(ViewGroup container, int position) {
+                container.addView(listviews.get(position));
+                return listviews.get(position);
+            }
+        };
+        viewPager.setAdapter(pagerAdapter);
     }
 
     @Override
