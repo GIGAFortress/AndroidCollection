@@ -18,9 +18,20 @@
         android:layout_weight="1">
     </com.example.chenlij.bezierexample.BezierLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button Main 1"
-        android:id="@+id/buttonm1"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始"
+            android:id="@+id/buttonm1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止"
+            android:id="@+id/buttonm2"/>
+    </LinearLayout>
+
 </LinearLayout>
