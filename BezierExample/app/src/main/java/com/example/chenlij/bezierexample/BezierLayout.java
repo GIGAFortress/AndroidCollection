@@ -30,6 +30,11 @@ import java.util.Random;
 public class BezierLayout extends RelativeLayout{
 
     private Drawable a;
+    private Drawable b;
+    private Drawable c;
+    private Drawable d;
+    private Drawable e;
+    private Drawable f;
     private int drawableWidth;
     private int drawableHeight;
     private LayoutParams mParameters;
@@ -41,6 +46,7 @@ public class BezierLayout extends RelativeLayout{
             , new LinearInterpolator()
             , new DecelerateInterpolator()//减速
     };
+    private Drawable[] drawables;
 
     public BezierLayout(Context context) {
         super(context);
@@ -59,6 +65,18 @@ public class BezierLayout extends RelativeLayout{
 
         /*使a映射资源a*/
         a = getResources().getDrawable(R.mipmap.a);
+        b = getResources().getDrawable(R.mipmap.b);
+        c = getResources().getDrawable(R.mipmap.c);
+        d = getResources().getDrawable(R.mipmap.d);
+        e = getResources().getDrawable(R.mipmap.e);
+        f = getResources().getDrawable(R.mipmap.f);
+        drawables = new Drawable[6];
+        drawables[0] = a;
+        drawables[1] = b;
+        drawables[2] = c;
+        drawables[3] = d;
+        drawables[4] = e;
+        drawables[5] = f;
 
         /*获取图片Drawable的高和宽*/
         drawableHeight = a.getIntrinsicHeight();
@@ -86,7 +104,7 @@ public class BezierLayout extends RelativeLayout{
         final ImageView imageView = new ImageView(getContext());
 
         /*imageView对象装填图片资源a*/
-        imageView.setImageDrawable(a);
+        imageView.setImageDrawable(drawables[mRandom.nextInt(drawables.length)]);
 
         /*设置imageView对象的宽高参数*/
         imageView.setLayoutParams(mParameters);
@@ -131,7 +149,7 @@ public class BezierLayout extends RelativeLayout{
         return bezierSet;
     }
 
-    private ValueAnimator getBezierValueAnimator(final ImageView iv) {
+    private ValueAnimator getBezierValueAnimator(final ImageView imageView) {
         PointF pointf0 = new PointF(mWidth / 2 - drawableWidth / 2, mHeight - drawableHeight);
         PointF pointf1 = new PointF(mRandom.nextInt(mWidth), mRandom.nextInt(mHeight / 2) + mHeight / 2);
         PointF pointf2 = new PointF(mRandom.nextInt(mWidth), mRandom.nextInt(mHeight / 2));
@@ -145,22 +163,22 @@ public class BezierLayout extends RelativeLayout{
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 PointF pointf = (PointF) animation.getAnimatedValue();
-                iv.setX(pointf.x);
-                iv.setY(pointf.y);
+                imageView.setX(pointf.x);
+                imageView.setY(pointf.y);
                 //为了美观，再设置alpha
-                iv.setAlpha(1 - animation.getAnimatedFraction());//getAnimatedFraction返回动画进行的百分比，api12以上支持
+                imageView.setAlpha(1 - animation.getAnimatedFraction());//getAnimatedFraction返回动画进行的百分比，api12以上支持
             }
         });
-        animator.setTarget(iv);
+        animator.setTarget(imageView);
         animator.setDuration(3000);
         //同样，为了美观我们还可以添加加速度,减速度，弹射等效果(插值器)
         animator.setInterpolator(interpolators[mRandom.nextInt(interpolators.length)]);
         return animator;
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-    }
+//    @Override
+//    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+//    }
 
 }
