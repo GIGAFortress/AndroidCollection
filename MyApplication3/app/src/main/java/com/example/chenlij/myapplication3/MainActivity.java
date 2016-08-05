@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity
                 BluetoothDeviceContext btContext = new BluetoothDeviceContext
                         (device.getName() == null ? device.getAddress() : device.getName(), device.getAddress(), RSSI);
                 discoveryDevices.add(btContext);
-                textViewC21.setText("");
                 textViewC21.append("\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
+                textViewC21.append("\n");
                 Log.d("B","\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
             }
         }
