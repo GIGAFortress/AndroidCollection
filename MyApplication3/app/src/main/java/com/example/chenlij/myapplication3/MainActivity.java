@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity
     };
 
     public void startDiscovery(View view){
+        textViewC21.setText("");
         if(bluetoothAdapter.isEnabled()){
             if(discoveryDevices != null){
                 discoveryDevices.clear();
@@ -127,11 +128,11 @@ public class MainActivity extends AppCompatActivity
 
     private void initializedView() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager1);
-        View view1 = findViewById(R.layout.content_1);
-        View view2 = findViewById(R.layout.content_2);
+//        View view1 = findViewById(R.layout.content_1);
+//        View view2 = findViewById(R.layout.content_2);
         LayoutInflater lf = getLayoutInflater().from(this);
-        view1 = lf.inflate(R.layout.content_1, null);
-        view2 = lf.inflate(R.layout.content_2, null);
+        View view1 = lf.inflate(R.layout.content_1, null);
+        View view2 = lf.inflate(R.layout.content_2, null);
         textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
         textViewC11 = (TextView) view1.findViewById(R.id.textViewC11);
         final List<View> listviews = new ArrayList<View>();
