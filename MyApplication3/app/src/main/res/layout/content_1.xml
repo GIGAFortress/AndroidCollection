@@ -17,4 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sample"/>
+    <com.example.chenlij.myapplication3.MaqTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="com.example.chenlij.myapplication3.Maq android:ellipsize=marquee android:singleLine=true "/>
 </LinearLayout>
