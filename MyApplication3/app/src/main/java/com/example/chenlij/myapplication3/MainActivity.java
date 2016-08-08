@@ -26,13 +26,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public TextView textViewC21;
+    public TextView textViewC22;
     public TextView textViewC11;
     private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private List<BluetoothDeviceContext> discoveryDevices = new ArrayList<BluetoothDeviceContext>();
@@ -74,9 +79,29 @@ public class MainActivity extends AppCompatActivity
 
                     } finally{
                         bluetoothAdapter.cancelDiscovery();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                sortBluetoothDevice();
+                            }
+                        });
                     }
                 }
             }).start();
+        }
+    }
+
+    private void sortBluetoothDevice() {
+        textViewC22.setText("");
+        Collections.sort(discoveryDevices, new Comparator<BluetoothDeviceContext>() {
+            @Override
+            public int compare(BluetoothDeviceContext lhs, BluetoothDeviceContext rhs) {
+                return (rhs.RSSI - lhs.RSSI);
+            }
+        });
+        final String[] bluetoothNames = new String[discoveryDevices.size()];
+        for(BluetoothDeviceContext device : discoveryDevices) {
+            textViewC22.append("\n" + device.name + "\n" + device.address + "\nRSSI=" + device.RSSI + "\n");
         }
     }
 
@@ -134,6 +159,7 @@ public class MainActivity extends AppCompatActivity
         View view1 = lf.inflate(R.layout.content_1, null);
         View view2 = lf.inflate(R.layout.content_2, null);
         textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
+        textViewC22 = (TextView) view2.findViewById(R.id.textViewC22);
         textViewC11 = (TextView) view1.findViewById(R.id.textViewC11);
         final List<View> listviews = new ArrayList<View>();
         listviews.add(view1);
