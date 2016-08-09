@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity
 
                     } finally{
                         bluetoothAdapter.cancelDiscovery();
+
+                        /*此处若不适用UI线程来处理会报错：该线程无法对UI线程进行操作*/
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -93,6 +95,8 @@ public class MainActivity extends AppCompatActivity
 
     private void sortBluetoothDevice() {
         textViewC22.setText("");
+
+        /*List排序方法Collections.sort*/
         Collections.sort(discoveryDevices, new Comparator<BluetoothDeviceContext>() {
             @Override
             public int compare(BluetoothDeviceContext lhs, BluetoothDeviceContext rhs) {

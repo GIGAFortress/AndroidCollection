@@ -171,6 +171,7 @@ public class BezierLayout extends RelativeLayout{
         });
         animator.setTarget(imageView);
         animator.setDuration(3000);
+
         //同样，为了美观我们还可以添加加速度,减速度，弹射等效果(插值器)
         animator.setInterpolator(interpolators[mRandom.nextInt(interpolators.length)]);
         return animator;
