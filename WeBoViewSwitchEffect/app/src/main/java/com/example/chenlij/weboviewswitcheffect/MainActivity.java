@@ -1,5 +1,6 @@
 package com.example.chenlij.weboviewswitcheffect;
 
+import android.app.Notification;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.support.v4.view.LayoutInflaterCompat;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -86,10 +88,13 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) view1.findViewById(R.id.listView1);
         dataList = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = null;
-        int[] pics = {R.drawable.pic1, R.drawable.pic2 };
-        String[] titles = {"新浪新闻", "中国日报"};
-        String[] contents = {"http://t.cn/Rt0j5Gt", "http://t.cn/RUuz4wV"};
-        for (int i = 0; i < pics.length; i++) {
+        int[] pics = {R.drawable.pic1, R.drawable.pic2,
+            R.drawable.pic3, R.drawable.pic4, R.drawable.pic5,
+            R.drawable.pic6, R.drawable.pic7 };
+        String[] titles = {"新浪新闻", "中国日报", "今日头条", "环球时报", "慕课网", "福州时事", "福州ing"};
+        String[] contents = {"http://t.cn/Rt0j5Gt", "http://t.cn/RUuz4wV", "欢迎您关注今日头条官方微博，更多精彩资讯",
+                "据英国路透社22日报道，土耳其总理达武特奥卢", "亲，欢迎关注慕课网官方微博", "福州本地", "福州ing"};
+        for (int i = 0; i < contents.length; i++) {
             map = new HashMap<String, Object>();
             map.put("pic", pics[i]);
             map.put("title1", titles[i]);
@@ -101,6 +106,31 @@ public class MainActivity extends AppCompatActivity {
         int[] to = {R.id.pic, R.id.title1, R.id.content1};
         listAdapter = new SimpleAdapter(this, dataList, R.layout.itemstyle, from, to);
         listView.setAdapter(listAdapter);
+//        setListViewHeightBasedOnChildren(listView);
+    }
+
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        // 获取ListView对应的Adapter
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
+            // listAdapter.getCount()返回数据项的数目
+            View listItem = listAdapter.getView(i, null, listView);
+            // 计算子项View 的宽高
+            listItem.measure(0, 0);
+            // 统计所有子项的总高度
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        // listView.getDividerHeight()获取子项间分隔符占用的高度
+        // params.height最后得到整个ListView完整显示需要的高度
+        listView.setLayoutParams(params);
     }
 
     private class MyViewPagerAdapter extends PagerAdapter {
@@ -150,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             animation.setFillAfter(true);// True:图片停在动画结束位置
             animation.setDuration(300);
             imageView.startAnimation(animation);
-            Toast.makeText(MainActivity.this, "您选择了" + viewPager.getCurrentItem() + "页卡", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MainActivity.this, "您选择了" + viewPager.getCurrentItem() + "页卡", Toast.LENGTH_SHORT).show();
         }
 
         @Override
