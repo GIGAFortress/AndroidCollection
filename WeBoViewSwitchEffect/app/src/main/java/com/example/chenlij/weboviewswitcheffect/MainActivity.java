@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,11 +85,18 @@ public class MainActivity extends AppCompatActivity {
     private void Initview1() {
         listView = (ListView) view1.findViewById(R.id.listView1);
         dataList = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("pic", R.drawable.pic1);
-        map.put("title1", "新浪新闻");
-        map.put("content1", "http://t.cn/Rt0j5Gt");
-        dataList.add(map);
+        Map<String, Object> map = null;
+        int[] pics = {R.drawable.pic1, R.drawable.pic2 };
+        String[] titles = {"新浪新闻", "中国日报"};
+        String[] contents = {"http://t.cn/Rt0j5Gt", "http://t.cn/RUuz4wV"};
+        for (int i = 0; i < pics.length; i++) {
+            map = new HashMap<String, Object>();
+            map.put("pic", pics[i]);
+            map.put("title1", titles[i]);
+            map.put("content1", contents[i]);
+            Log.e("TAG","i="+i);
+            dataList.add(map);
+        }
         String[] from = {"pic", "title1", "content1"};
         int[] to = {R.id.pic, R.id.title1, R.id.content1};
         listAdapter = new SimpleAdapter(this, dataList, R.layout.itemstyle, from, to);
