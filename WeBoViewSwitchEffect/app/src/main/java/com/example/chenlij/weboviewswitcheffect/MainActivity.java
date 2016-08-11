@@ -15,10 +15,14 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private View view2;
     private View view3;
     private int currIndex;
+    private ListView listView;
+    private List<Map<String, Object>> dataList;
+    private SimpleAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +72,27 @@ public class MainActivity extends AppCompatActivity {
         view1 = lf.inflate(R.layout.view1, null);
         view2 = lf.inflate(R.layout.view2, null);
         view3 = lf.inflate(R.layout.view3, null);
+        Initview1();
         views.add(view1);
         views.add(view2);
         views.add(view3);
         viewPager.setAdapter(new MyViewPagerAdapter(views));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(new MyPagerChangeListener());
+    }
+
+    private void Initview1() {
+        listView = (ListView) view1.findViewById(R.id.listView1);
+        dataList = new ArrayList<Map<String, Object>>();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("pic", R.drawable.pic1);
+        map.put("title1", "新浪新闻");
+        map.put("content1", "http://t.cn/Rt0j5Gt");
+        dataList.add(map);
+        String[] from = {"pic", "title1", "content1"};
+        int[] to = {R.id.pic, R.id.title1, R.id.content1};
+        listAdapter = new SimpleAdapter(this, dataList, R.layout.itemstyle, from, to);
+        listView.setAdapter(listAdapter);
     }
 
     private class MyViewPagerAdapter extends PagerAdapter {
