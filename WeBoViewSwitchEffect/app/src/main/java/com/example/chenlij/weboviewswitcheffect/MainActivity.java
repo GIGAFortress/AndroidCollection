@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private List<Map<String, Object>> dataList;
     private SimpleAdapter listAdapter;
+    private PullToRefreshListView mPullToRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         view2 = lf.inflate(R.layout.view2, null);
         view3 = lf.inflate(R.layout.view3, null);
         Initview1();
+        Initview2();
         views.add(view1);
         views.add(view2);
         views.add(view3);
@@ -107,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new SimpleAdapter(this, dataList, R.layout.itemstyle, from, to);
         listView.setAdapter(listAdapter);
 //        setListViewHeightBasedOnChildren(listView);
+    }
+
+    private void Initview2() {
+        mPullToRefresh = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
     }
 
     public void setListViewHeightBasedOnChildren(ListView listView) {
@@ -185,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageScrollStateChanged(int state) {
-
         }
     }
 }
