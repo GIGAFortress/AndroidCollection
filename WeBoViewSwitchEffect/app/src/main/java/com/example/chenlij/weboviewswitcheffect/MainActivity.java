@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -24,7 +25,9 @@ import android.widget.Toast;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -114,7 +117,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Initview2() {
-        mPullToRefresh = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
+        mPullToRefresh = (PullToRefreshListView) view2.findViewById(R.id.pull_refresh_list);
+        ListView actualListView = mPullToRefresh.getRefreshableView();
+        LinkedList<String> mListItems = new LinkedList<String>();
+        String[] mStrings = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",};
+        mListItems.addAll(Arrays.asList(mStrings));
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.simpleitem, mListItems);
+        actualListView.setAdapter(mAdapter);
     }
 
     public void setListViewHeightBasedOnChildren(ListView listView) {
