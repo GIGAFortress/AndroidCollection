@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\drawable-hdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_flip.png",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\drawable-hdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_rotate.png",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshListFragment\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\drawable-hdpi-v4\\default_ptr_rotate.png"
+    }
+]

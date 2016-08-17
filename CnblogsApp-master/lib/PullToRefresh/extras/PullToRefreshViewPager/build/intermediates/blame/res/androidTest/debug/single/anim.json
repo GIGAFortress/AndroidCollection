@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "H:\\Backup\\AndroidCollection\\CnblogsApp-master\\lib\\PullToRefresh\\extras\\PullToRefreshViewPager\\build\\intermediates\\exploded-aar\\CnblogsApp-master.lib.PullToRefresh\\library\\unspecified\\res\\anim\\slide_in_from_top.xml"
+    }
+]

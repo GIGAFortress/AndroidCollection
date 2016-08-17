@@ -15,4 +15,4 @@
         android:topLeftRadius="@dimen/indicator_corner_radius"
         android:topRightRadius="@dimen/indicator_corner_radius" />
 
-</shape><!-- From: file:/D:/AndroidStudioProjects/Cnblogs/CnblogsApp/lib/PullToRefresh/library/res/drawable/indicator_bg_bottom.xml --><!-- From: file:/D:/AndroidStudioProjects/Cnblogs/CnblogsApp/lib/PullToRefresh/extras/PullToRefreshListFragment/build/intermediates/exploded-aar/CnblogsApp.lib.PullToRefresh/library/unspecified/res/drawable/indicator_bg_bottom.xml -->
+</shape>
