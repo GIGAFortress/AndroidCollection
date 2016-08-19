@@ -2,7 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#AAAAAA">
+
+
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"
@@ -12,23 +22,17 @@
         <!-- 主要内容的视图-->
         <!-- DrawerLayout的第一个子元素是主要内容，即抽屉没有打开时显示的布局 -->
 
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FF00CC">
+                android:text="Hello" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hello"/>
-                </LinearLayout>
-
-            </android.support.v7.widget.Toolbar>
 
         <!-- 导航菜单 -->
         <!-- android:layout_gravity="start" 设置该属性可以让抽屉从左到右滑动， 也可以设置为left或者right-->
@@ -36,14 +40,14 @@
             android:id="@+id/left_drawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:background="#6699FF"
-            android:layout_gravity="start">
+            android:layout_gravity="start"
+            android:background="#6699FF">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:text="LeftMenu"/>
+                android:text="LeftMenu"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
