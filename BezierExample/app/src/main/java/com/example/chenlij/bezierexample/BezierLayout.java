@@ -143,7 +143,7 @@ public class BezierLayout extends RelativeLayout{
         ValueAnimator bezierValueAnimator = getBezierValueAnimator(imageView);
         AnimatorSet bezierSet = new AnimatorSet();
         bezierSet.setTarget(imageView);
-        bezierSet.playSequentially(startAnimatorSet, bezierValueAnimator);//将所有动画添加到一起：起始动画---->贝塞尔曲线动画
+        bezierSet.playSequentially(bezierValueAnimator);//将所有动画添加到一起：起始动画---->贝塞尔曲线动画
         //需要注意的是当时用AnimatorSet时，尽量不要设置Duration，API会根据所包含的动画集自动计算持续时间
 //        bezierSet.setDuration(1000);
         return bezierSet;

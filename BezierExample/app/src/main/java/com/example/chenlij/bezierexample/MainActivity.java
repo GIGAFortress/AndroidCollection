@@ -20,8 +20,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void run() {
             if(flag == true){
-                handler.postDelayed(this, 50);
+                handler.postDelayed(this, 50);      //设置延迟时间
             }
+
+            /*需要执行的代码*/
             bezierLayout.addKeda();
         }
     };
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        getSupportActionBar().hide();       //隐藏AppCompatActivity的标题
         initializedView();
     }
 
