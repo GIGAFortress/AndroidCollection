@@ -265,10 +265,10 @@ public class NavigationDrawerFragment extends Fragment {
 
         if (item.getItemId() == R.id.action_share) {
             Toast.makeText(getActivity(), getString(R.string.action_share), Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(Intent.ACTION_SEND);
+            Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.action_share));
-            intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text) +  getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text) + getString(R.string.app_name));
             startActivity(Intent.createChooser(intent, getString(R.string.app_name) + " - " + getActionBar().getTitle()));
             return true;
         }
