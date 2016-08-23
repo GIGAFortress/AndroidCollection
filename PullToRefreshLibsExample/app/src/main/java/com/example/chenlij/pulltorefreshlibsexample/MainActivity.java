@@ -20,6 +20,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
                 mWifiManager.startScan();
                 listResult = mWifiManager.getScanResults();
                 if (listResult != null) {
+                    Collections.sort(listResult, new Comparator<ScanResult>() {
+                        @Override
+                        public int compare(ScanResult arg0, ScanResult arg1) {
+                            return (arg1.level - arg0.level);
+                        }
+                    });
                     mListItems.removeAll(mListItems);
                     for (int i = 0; i < listResult.size(); i++) {
                         mScanResult = listResult.get(i);
@@ -92,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 //                        mListItems.addFirst(mScanResult.SSID);
                     }
                 }
+
             } catch (Exception e) {
             }
             return new String[]{"Hello"};
