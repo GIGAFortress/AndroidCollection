@@ -5,15 +5,15 @@
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/level1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:text="level"/>
+    <TextView
         android:id="@+id/SSID1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="SSID"/>
-    <TextView
-        android:id="@+id/level1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="level"/>
 </LinearLayout>
