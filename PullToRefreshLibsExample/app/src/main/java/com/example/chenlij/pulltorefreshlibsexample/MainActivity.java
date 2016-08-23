@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -18,15 +17,12 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,17 +31,21 @@ public class MainActivity extends AppCompatActivity {
     private SimpleAdapter mAdapter;
     private WifiManager mWifiManager;
     private WifiInfo mWifiInfo;
-    private List<ScanResult> listResult;
+    private List<ScanResult> listScanResult;
     private ScanResult mScanResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*初始化WiFi控制器*/
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        mWifiInfo = mWifiManager.getConnectionInfo();
+        mWifiInfo = mWifiManager.getConnectionInfo();   //WiFiInfo用于检测是否连上WiFi
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
         mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+            /*在刷新的时候加入时间*/
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
@@ -81,18 +81,22 @@ public class MainActivity extends AppCompatActivity {
         protected String[] doInBackground(Void... params) {
             // Simulates a background job.
             try {
+
+                /*从这开始扫描WiFi*/
                 mWifiManager.startScan();
-                listResult = mWifiManager.getScanResults();
-                if (listResult != null) {
-                    Collections.sort(listResult, new Comparator<ScanResult>() {
+                listScanResult = mWifiManager.getScanResults();     //将扫描结果储存到ScanResult类型的List中
+                if (listScanResult != null) {
+
+                    /*根据Level大小进行排序*/
+                    Collections.sort(listScanResult, new Comparator<ScanResult>() {
                         @Override
                         public int compare(ScanResult arg0, ScanResult arg1) {
                             return (arg1.level - arg0.level);
                         }
                     });
-                    mListItems.removeAll(mListItems);
-                    for (int i = 0; i < listResult.size(); i++) {
-                        mScanResult = listResult.get(i);
+                    mListItems.removeAll(mListItems);   //先清空一下列表
+                    for (int i = 0; i < listScanResult.size(); i++) {
+                        mScanResult = listScanResult.get(i);
                         Map<String, Object> map = new HashMap<String, Object>();
                         map.put("SSID", mScanResult.SSID);
                         map.put("LEVEL", mScanResult.level);
