@@ -1,5 +1,9 @@
 package com.example.chenlij.pulltorefreshlibsexample;
 
+import android.content.Context;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,17 +19,24 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private PullToRefreshListView mPullRefreshListView;
     private LinkedList<String> mListItems;
     private ArrayAdapter<String> mAdapter;
+    private WifiManager mWifiManager;
+    private WifiInfo mWifiInfo;
+    private List<ScanResult> listResult;
+    private ScanResult mScanResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        mWifiInfo = mWifiManager.getConnectionInfo();
         mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
         mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
             @Override
@@ -64,15 +75,23 @@ public class MainActivity extends AppCompatActivity {
         protected String[] doInBackground(Void... params) {
             // Simulates a background job.
             try {
-                Thread.sleep(4000);
-            } catch (InterruptedException e) {
+                mWifiManager.startScan();
+                listResult = mWifiManager.getScanResults();
+                if (listResult != null) {
+                    mListItems.removeAll(mListItems);
+                    for (int i = 0; i < listResult.size(); i++) {
+                        mScanResult = listResult.get(i);
+                        mListItems.addFirst(mScanResult.SSID);
+                    }
+                }
+            } catch (Exception e) {
             }
             return mStrings;
         }
 
         @Override
         protected void onPostExecute(String[] result) {
-            mListItems.addFirst("Added after refresh...");
+//            mListItems.addFirst("Added after refresh...");
             mAdapter.notifyDataSetChanged();
 
             // Call onRefreshComplete when the list has been refreshed.
