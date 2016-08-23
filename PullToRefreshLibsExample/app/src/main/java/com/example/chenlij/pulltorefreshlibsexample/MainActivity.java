@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -17,15 +18,19 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private PullToRefreshListView mPullRefreshListView;
-    private LinkedList<String> mListItems;
-    private ArrayAdapter<String> mAdapter;
+    private LinkedList<Map<String, Object>> mListItems;
+    private SimpleAdapter mAdapter;
     private WifiManager mWifiManager;
     private WifiInfo mWifiInfo;
     private List<ScanResult> listResult;
@@ -62,10 +67,9 @@ public class MainActivity extends AppCompatActivity {
         // Need to use the Actual ListView when registering for Context Menu
         registerForContextMenu(actualListView);
 
-        mListItems = new LinkedList<String>();
-        mListItems.addAll(Arrays.asList(mStrings));
+        mListItems = new LinkedList<Map<String, Object>>();
 
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mListItems);
+        mAdapter = new SimpleAdapter(this, mListItems, R.layout.wifi_item, new String[]{"SSID", "LEVEL"}, new int[]{R.id.SSID1, R.id.level1});
         actualListView.setAdapter(mAdapter);
     }
 
@@ -81,12 +85,16 @@ public class MainActivity extends AppCompatActivity {
                     mListItems.removeAll(mListItems);
                     for (int i = 0; i < listResult.size(); i++) {
                         mScanResult = listResult.get(i);
-                        mListItems.addFirst(mScanResult.SSID);
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("SSID", mScanResult.SSID);
+                        map.put("LEVEL", mScanResult.level);
+                        mListItems.add(map);
+//                        mListItems.addFirst(mScanResult.SSID);
                     }
                 }
             } catch (Exception e) {
             }
-            return mStrings;
+            return new String[]{"Hello"};
         }
 
         @Override
@@ -101,9 +109,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String[] mStrings = { "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
-            "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
-            "Allgauer Emmentaler", "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
-            "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag", "Airedale", "Aisy Cendre",
-            "Allgauer Emmentaler" };
 }
