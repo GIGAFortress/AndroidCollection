@@ -15,4 +15,13 @@
         android:layout_height="72dp"
         android:layout_marginTop="20dp"
         android:src="@mipmap/profile"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="APP开发者"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </LinearLayout>
