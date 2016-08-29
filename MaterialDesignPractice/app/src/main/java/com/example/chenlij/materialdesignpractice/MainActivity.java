@@ -84,18 +84,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchToExample() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new ExampleFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new ExampleFragment()).commit();
         mToolbar.setTitle(R.string.navigation_example);
     }
 
     private void switchToBlog() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new BlogFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new BlogFragment()).commit();
         mToolbar.setTitle(R.string.navigation_my_blog);
     }
 
 
     private void switchToAbout() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AboutFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AboutFragment()).commit();
         mToolbar.setTitle(R.string.navigation_about);
     }
 

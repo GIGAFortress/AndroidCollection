@@ -5,12 +5,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_book"
+            android:icon="@drawable/menu_1"
             android:title="例子" />
         <item
             android:id="@+id/navigation_item_example"
+            android:icon="@drawable/menu_2"
             android:title="控件" />
         <item
             android:id="@+id/navigation_item_blog"
+            android:icon="@drawable/menu_3"
             android:title="博客" />
         <item
             android:id="@+id/navigation_item_about"
