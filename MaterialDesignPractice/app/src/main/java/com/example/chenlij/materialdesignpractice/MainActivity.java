@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         mToolbar.setTitle(R.string.navigation_my_blog);
     }
 
-
     private void switchToAbout() {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AboutFragment()).commit();
         mToolbar.setTitle(R.string.navigation_about);
