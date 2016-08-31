@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.chenlij.materialdesignpractice.example.AppBarDetailActivity;
+import com.example.chenlij.materialdesignpractice.example.CardViewActivity;
 import com.example.chenlij.materialdesignpractice.news.NewsListActivity;
 import com.example.chenlij.materialdesignpractice.widget.DividerItemDecoration;
 import com.example.chenlij.materialdesignpractice.widget.RecyclerItemClickListener;
@@ -56,6 +58,14 @@ public class ExampleFragment extends Fragment {
             switch (position) {
                 case 0:
                     intent = new Intent(getActivity(), NewsListActivity.class);
+                    startActivity(intent);
+                    break;
+                case 2:
+                    intent = new Intent(getActivity(), CardViewActivity.class);
+                    startActivity(intent);
+                    break;
+                case 3:
+                    intent = new Intent(getActivity(), AppBarDetailActivity.class);
                     startActivity(intent);
                     break;
             }

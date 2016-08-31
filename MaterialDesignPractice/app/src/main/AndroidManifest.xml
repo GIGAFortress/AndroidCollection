@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".news.NewsListActivity" />
+        <activity android:name=".example.CardViewActivity" />
+        <activity android:name=".example.AppBarDetailActivity" />
     </application>
 
 </manifest>
