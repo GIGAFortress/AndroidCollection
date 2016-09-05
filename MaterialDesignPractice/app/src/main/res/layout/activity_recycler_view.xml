@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/include_toolbar"/>
+
     <com.example.chenlij.materialdesignpractice.widget.RefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
@@ -13,7 +17,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/divider">
+            android:background="@color/light_grey">
 
         </android.support.v7.widget.RecyclerView>
     </com.example.chenlij.materialdesignpractice.widget.RefreshLayout>
