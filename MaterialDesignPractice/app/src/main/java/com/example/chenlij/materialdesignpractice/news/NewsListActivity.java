@@ -1,7 +1,9 @@
 package com.example.chenlij.materialdesignpractice.news;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +22,7 @@ import com.example.chenlij.materialdesignpractice.widget.RefreshLayout;
  */
 public class NewsListActivity extends AppCompatActivity {
 
-    private RefreshLayout refreshLayout;
+    private SwipeRefreshLayout refreshLayout;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private Toolbar toolbar;
@@ -31,11 +33,11 @@ public class NewsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
         initToolBar();
         initRefreshView();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.addItemDecoration(new DividerOffsetDecoration());
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+//        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+//        mLayoutManager = new LinearLayoutManager(this);
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mRecyclerView.addItemDecoration(new DividerOffsetDecoration());
+//        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     private void initToolBar() {
@@ -55,28 +57,30 @@ public class NewsListActivity extends AppCompatActivity {
     }
 
     private void initRefreshView() {
-        refreshLayout = (RefreshLayout) findViewById(R.id.refresh_layout);
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
 //        assert null == refreshLayout;
         refreshLayout.setColorSchemeResources(R.color.google_blue,
                 R.color.google_green,
                 R.color.google_red,
                 R.color.google_yellow);
-        refreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try {
-                    Thread.sleep(2000);
-                } catch (Exception e){
+                new Handler().postDelayed(new Runnable() {
 
-                }
+                    @Override
+                    public void run() {
+                        refreshLayout.setRefreshing(false);
+                    }
+                }, 6000);
                 Toast.makeText(NewsListActivity.this, "onRefresh", 500).show();
             }
         });
-        refreshLayout.setOnLoadListener(new RefreshLayout.OnLoadListener() {
-            @Override
-            public void onLoad() {
-                Toast.makeText(NewsListActivity.this, "setOnLoadListenr", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        refreshLayout.setOnLoadListener(new SwipeRefreshLayout.OnLoadListener() {
+//            @Override
+//            public void onLoad() {
+//                Toast.makeText(NewsListActivity.this, "setOnLoadListenr", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }
