@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        getSupportActionBar().hide();       //隐藏AppCompatActivity的标题
-//        setSupportActionBar(mToolbar);    //这个是不能用的，会报错
+//        getSupportActionBar().hide();       //隐藏AppCompatActivity的标题
+        setSupportActionBar(mToolbar);    //这个是不能用的，会报错
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
