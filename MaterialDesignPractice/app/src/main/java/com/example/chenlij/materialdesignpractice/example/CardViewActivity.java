@@ -18,7 +18,8 @@ public class CardViewActivity extends AppCompatActivity{
         setContentView(R.layout.activity_cardview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_book);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
+        setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
