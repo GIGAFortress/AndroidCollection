@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chenlij.materialdesignpractice.example.AppBarDetailActivity;
@@ -83,12 +84,12 @@ public class ExampleFragment extends Fragment {
         public class ViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
             public TextView mTextView;
-
-            public int position;
+            public ImageView mImageView;
 
             public ViewHolder(View v) {
                 super(v);
                 mTextView = (TextView) v.findViewById(R.id.news_title);     //在onCreateViewHolder中使用到的样式中的控件
+                mImageView = (ImageView) v.findViewById(R.id.news_image);
             }
         }
 
@@ -100,9 +101,10 @@ public class ExampleFragment extends Fragment {
         }
 
         @Override
-        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
-            // create a new view
+        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            /*固定步骤*/
+            //创建一个View，使用的Item资源
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_view, parent, false);
             v.setBackgroundResource(mBackground);
@@ -116,7 +118,7 @@ public class ExampleFragment extends Fragment {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
             holder.mTextView.setText(mDataset[position]);
-
+            holder.mImageView.setImageResource(R.drawable.heibaixiong);
         }
 
         // Return the size of your dataset (invoked by the layout manager)
