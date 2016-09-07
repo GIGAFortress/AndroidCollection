@@ -1,6 +1,6 @@
 package com.example.chenlij.materialdesignpractice.news;
 
-import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.chenlij.materialdesignpractice.ExampleFragment;
 import com.example.chenlij.materialdesignpractice.R;
 import com.example.chenlij.materialdesignpractice.widget.DividerOffsetDecoration;
-import com.example.chenlij.materialdesignpractice.widget.PullToRefreshLayout;
-import com.example.chenlij.materialdesignpractice.widget.RefreshLayout;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Chenlij on 2016/8/29.
@@ -36,19 +32,28 @@ public class NewsListActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private Toolbar toolbar;
     private Handler mHandler;
-    private Runnable mRunnable;
+    private Runnable stopRefresh;
     private Adapter mAdapter;
     private String[] mString;
+    private Runnable startRefresh;
+    private String[] mString1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         mString = new String[]{"Alpha", "Beta", "Charli", "Delta"};
+        mString1 = new String[]{"Atago", "Agagi"};
         initRunnable();
         initToolBar();
         initRefreshView();
         initRecyclerView();
+    }
+
+    private void refreshing(){
+        mHandler.post(startRefresh);
+        mHandler.postDelayed(stopRefresh, 3000);
+//        mAdapter.notifyDataSetChanged();
     }
 
     private void initRecyclerView() {
@@ -63,11 +68,19 @@ public class NewsListActivity extends AppCompatActivity {
 
     private void initRunnable() {
         mHandler = new Handler();
-        mRunnable = new Runnable(){
+        startRefresh = new Runnable(){
+
+            @Override
+            public void run() {
+                refreshLayout.setRefreshing(true);
+            }
+        };
+        stopRefresh = new Runnable(){
 
             @Override
             public void run() {
                 refreshLayout.setRefreshing(false);
+
             }
         };
     }
@@ -97,12 +110,11 @@ public class NewsListActivity extends AppCompatActivity {
                 R.color.google_green,
                 R.color.google_red,
                 R.color.google_yellow);
-        refreshLayout.setRefreshing(true);
-        mHandler.postDelayed(mRunnable, 3000);
+        refreshing();
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mHandler.postDelayed(mRunnable, 3000);
+                refreshing();
                 Toast.makeText(NewsListActivity.this, "onRefresh", Toast.LENGTH_SHORT).show();
             }
         });
@@ -154,4 +166,6 @@ public class NewsListActivity extends AppCompatActivity {
             return mString.length;
         }
     }
+
+
 }
