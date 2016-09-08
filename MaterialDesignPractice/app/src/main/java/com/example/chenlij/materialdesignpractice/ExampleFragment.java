@@ -16,12 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chenlij.materialdesignpractice.example.AppBarDetailActivity;
+import com.example.chenlij.materialdesignpractice.example.BottomTabActivity;
 import com.example.chenlij.materialdesignpractice.example.CardViewActivity;
 import com.example.chenlij.materialdesignpractice.news.NewsListActivity;
 import com.example.chenlij.materialdesignpractice.widget.DividerItemDecoration;
 import com.example.chenlij.materialdesignpractice.widget.RecyclerItemClickListener;
 
 /**
+ * 通过侧滑菜单选择控件切换至该页面（FragMent类型）
  * Created by Chenlij on 2016/8/29.
  */
 public class ExampleFragment extends Fragment {
@@ -33,8 +35,11 @@ public class ExampleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        /*Fragment类型的页面使用inflater来装载*/
         View view = inflater.inflate(R.layout.fragment_example, null);
 
+        /*寻找该fragment上的控件的时候注意标明view*/
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);    //Adapter无法修改RecyclerView的尺寸
         mLayoutManager = new LinearLayoutManager(getActivity());    //创建一个垂直属性的LinearLayout
@@ -51,6 +56,7 @@ public class ExampleFragment extends Fragment {
         return view;
     }
 
+    /*此处作RecyclerView的点击监听*/
     private RecyclerItemClickListener.OnItemClickListener onItemClickListener = new RecyclerItemClickListener.OnItemClickListener() {
 
         @Override
@@ -69,6 +75,10 @@ public class ExampleFragment extends Fragment {
                     intent = new Intent(getActivity(), AppBarDetailActivity.class);
                     startActivity(intent);
                     break;
+                case 4:
+                    intent = new Intent(getActivity(), BottomTabActivity.class);
+                    startActivity(intent);
+                    break;
             }
         }
     };
@@ -81,6 +91,7 @@ public class ExampleFragment extends Fragment {
         // Provide a reference to the views for each data item
         // Complex data items may need more than one view per item, and
         // you provide access to all the views for a data item in a view holder
+        /*自定义类型ViewHolder*/
         public class ViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
             public TextView mTextView;

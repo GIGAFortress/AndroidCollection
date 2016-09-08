@@ -20,6 +20,7 @@
         <activity android:name=".news.NewsListActivity" />
         <activity android:name=".example.CardViewActivity" />
         <activity android:name=".example.AppBarDetailActivity" />
+        <activity android:name=".example.BottomTabActivity"/>
     </application>
 
 </manifest>

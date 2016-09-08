@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,14 +47,15 @@ public class NewsListActivity extends AppCompatActivity {
         mString1 = new String[]{"Atago", "Agagi"};
         initRunnable();
         initToolBar();
-        initRefreshView();
         initRecyclerView();
+        initRefreshView();
     }
 
     private void refreshing(){
         mHandler.post(startRefresh);
         mHandler.postDelayed(stopRefresh, 3000);
-//        mAdapter.notifyDataSetChanged();
+        mString = mString1;
+        mAdapter.notifyDataSetChanged();
     }
 
     private void initRecyclerView() {
