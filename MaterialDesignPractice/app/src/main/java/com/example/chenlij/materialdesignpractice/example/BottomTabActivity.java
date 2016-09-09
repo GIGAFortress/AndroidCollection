@@ -71,6 +71,7 @@ public class BottomTabActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
 
+        /*设置图片和文字前要先执行setupWithViewpager 否则会空指针*/
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             if (tab != null) {

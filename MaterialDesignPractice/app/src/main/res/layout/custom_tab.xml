@@ -9,6 +9,7 @@
         android:layout_marginTop="2dp"
         android:id="@+id/imageView"
         android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"
         android:layout_width="25dp"
         android:layout_height="25dp" />
 
@@ -17,6 +18,7 @@
         android:layout_marginTop="2dp"
         android:textSize="14sp"
         android:textColor="@color/tab_text"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
