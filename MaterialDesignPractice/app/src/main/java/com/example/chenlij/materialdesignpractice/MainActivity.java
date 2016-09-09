@@ -24,14 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        getSupportActionBar().hide();       //隐藏AppCompatActivity的标题
-        setSupportActionBar(mToolbar);    //这个是不能用的，会报错
+//        getSupportActionBar().hide();       //隐藏AppCompatActivity的标题，默认主题下生效，在MainFest中使用AppTheme或其子类的主题的话会导致空指针
+        setSupportActionBar(mToolbar);    //没有在MainFest下设置AppTheme的会报空指针的错误
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
-                R.string.drawer_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+
         setupDrawerContent(mNavigationView);    //设置Menu的点击事件
         setUpProfileImage();    //设置Menu中的头像
     }
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             profileView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    /*点击头像跳往博客页面*/
 //                    switchToBlog();
 //                    mDrawerLayout.closeDrawers();
 //                    mNavigationView.getMenu().getItem(1).setChecked(true);
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
+
+        /*对NavigationView中嵌套的Menu的Item设置监听*/
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override

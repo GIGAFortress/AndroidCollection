@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <!--这里一定要使用RelativeLayout来装ToolBar和其他控件，使用Linearlayout的话ToolBar会把其他控件给挤压没了-->
 
     <include
         android:id="@+id/appbar"
         layout="@layout/include_toolbar" />
 
+    <!--orientation如果不设置的默认是横向的而不是纵向，那样的话会导致0dp的高度设置的没有意义-->
     <LinearLayout
+        android:layout_below="@+id/appbar"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:background="@color/accent"
+            android:scrollbars="none"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-
-        </android.support.v4.view.ViewPager>
+            android:layout_weight="1" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
             android:background="@color/primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </android.support.design.widget.TabLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

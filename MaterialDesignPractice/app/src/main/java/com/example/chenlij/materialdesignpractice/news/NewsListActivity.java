@@ -88,6 +88,8 @@ public class NewsListActivity extends AppCompatActivity {
     }
 
     private void initToolBar() {
+
+        /*ToolBar使用集合*/
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("最新");
         setSupportActionBar(toolbar);   //Mainfest中没有设置AppTheme也不会报错
@@ -120,6 +122,8 @@ public class NewsListActivity extends AppCompatActivity {
                 Toast.makeText(NewsListActivity.this, "onRefresh", Toast.LENGTH_SHORT).show();
             }
         });
+
+        /*使用v4的SwipeRefrshLayout没法有OnLoad的效果*/
 //        refreshLayout.setOnLoadListener(new SwipeRefreshLayout.OnLoadListener() {
 //            @Override
 //            public void onLoad() {
@@ -133,7 +137,6 @@ public class NewsListActivity extends AppCompatActivity {
 
         private String[] mString;
 
-        /*传入String参数*/
         public MyAdapter(String[] mString) {
             this.mString = mString;
         }
@@ -144,6 +147,8 @@ public class NewsListActivity extends AppCompatActivity {
             public ImageView mImageView;
             public ViewHolder(View itemView) {
                 super(itemView);
+
+                /*寻找ID，用于寻找将要使用的ID*/
                 mTextView = (TextView) itemView.findViewById(R.id.news_title);  //此处要注意要使用传入的View类型参数来寻找ID，不然会是空指针
                 mImageView = (ImageView) itemView.findViewById(R.id.news_image);
             }
@@ -151,7 +156,7 @@ public class NewsListActivity extends AppCompatActivity {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            //创建ViewHolder
+            //创建ViewHolder，在这里可以设置使用的RecyclerView的单个Item的样式
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
             ViewHolder vh = new ViewHolder(v);
             return vh;
@@ -159,7 +164,7 @@ public class NewsListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            //绑定数据
+            /*可以对具体的每个Item进行内容的设置*/
             holder.mTextView.setText(mString[position]);
         }
 
