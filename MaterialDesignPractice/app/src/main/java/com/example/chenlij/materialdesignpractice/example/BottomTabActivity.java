@@ -32,7 +32,6 @@ public class BottomTabActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,7 +50,8 @@ public class BottomTabActivity extends AppCompatActivity {
 //        MyFragmentPagerAdapter pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), this);
 
         List<View> views = new ArrayList<View>();
-        /*放置Fragment的Layout.xml文件*/
+
+        //设置要放置的图片
         int layoutResources[] = {
                 R.layout.activity_bottom_tab_fragment1,
                 R.layout.activity_bottom_tab_fragment2,

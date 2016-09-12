@@ -44,7 +44,7 @@ public class ExampleFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);    //Adapter无法修改RecyclerView的尺寸
         mLayoutManager = new LinearLayoutManager(getActivity());    //创建一个垂直属性的LinearLayout
         mRecyclerView.setLayoutManager(mLayoutManager);     //设置RecyclerView将会使用的Layout
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST)); //为RecyclerView添加个ItemDecoration
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST)); //每个Item之间设置个分割线
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), onItemClickListener));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -115,7 +115,7 @@ public class ExampleFragment extends Fragment {
         public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
             /*固定步骤*/
-            //创建一个View，使用的Item资源
+            //指定Item样式
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_view, parent, false);
             v.setBackgroundResource(mBackground);
@@ -128,7 +128,9 @@ public class ExampleFragment extends Fragment {
         public void onBindViewHolder(ViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            holder.mTextView.setText(mDataset[position]);
+            holder.mTextView.setText(mDataset[position]);   //设置Item的文本
+
+            //设置Item的图片，可以使用个drawable的int数组来存放不同图片并传入到该Adapter就可以使每个item都拥有不同的图片
             holder.mImageView.setImageResource(R.drawable.heibaixiong);
         }
 
