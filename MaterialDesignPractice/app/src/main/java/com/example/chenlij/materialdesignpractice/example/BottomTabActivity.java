@@ -65,10 +65,8 @@ public class BottomTabActivity extends AppCompatActivity {
             views.add(lf.inflate(layoutRes, null));
         }
 
-        MyViewPagerAdapter viewPageAdapater = new MyViewPagerAdapter(views, this);
-
+        MyViewPagerAdapter viewPageAdapater = new MyViewPagerAdapter(views, this);  //自定义ViewPager的界面，Adapter适用
         viewPager.setAdapter(viewPageAdapater);
-
         tabLayout.setupWithViewPager(viewPager);
 
         /*设置图片和文字前要先执行setupWithViewpager 否则会空指针*/

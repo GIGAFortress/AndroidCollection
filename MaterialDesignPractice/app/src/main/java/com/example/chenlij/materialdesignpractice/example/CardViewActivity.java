@@ -12,13 +12,18 @@ import com.example.chenlij.materialdesignpractice.R;
  * Created by Chenlij on 2016/8/31.
  */
 public class CardViewActivity extends AppCompatActivity{
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardview);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.title_book);
-//        getSupportActionBar().hide();
+        initToolBar();
+    }
+
+    private void initToolBar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.title_buttom_tab);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

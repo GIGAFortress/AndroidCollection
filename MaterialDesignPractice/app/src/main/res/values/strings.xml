@@ -10,4 +10,5 @@
     <string name="navigation_about">关于</string>
     <string name="title_book">书籍</string>
     <string name="title_buttom_tab">Bottom Tab</string>
+    <string name="transition_book_img">transition_book_img</string>
 </resources>
