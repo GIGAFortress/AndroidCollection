@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
         animatedExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView expandableListView, View view, int groupPosition, long l) {
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int groupPosition, long id) {
                 if(animatedExpandableListView.isGroupExpanded(groupPosition)){
                     animatedExpandableListView.collapseGroupWithAnimation(groupPosition);
                 } else {
                     animatedExpandableListView.expandGroupWithAnimation(groupPosition);
                 }
+                return true;
+            }
+        });
+
+        animatedExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int parentPosition, int childPosition, long id) {
+                Toast.makeText(MainActivity.this, "view=" + view + "i=" + parentPosition + "i1=" + childPosition + "l=" + id, Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
