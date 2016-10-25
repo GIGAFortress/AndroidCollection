@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\residemenu_custom.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\residemenu_custom.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\residemenu_item.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\residemenu_item.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\residemenu_custom_right_scrollview.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\residemenu_custom_right_scrollview.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\residemenu_custom_left_scrollview.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\AndroidResideMenu\\ResideMenuLibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\residemenu_custom_left_scrollview.xml"
+    }
+]
