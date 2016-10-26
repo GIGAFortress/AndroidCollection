@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -11,7 +13,7 @@ import android.widget.Toast;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
-public class MenuActivity extends FragmentActivity implements View.OnClickListener{
+public class MenuActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ResideMenu resideMenu;
     private MenuActivity mContext;
@@ -86,6 +88,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     public void onClick(View view) {
 
         if (view == itemHome){
+            Log.e(TAG, "onClick: ");
             changeFragment(new HomeFragment());
         }else if (view == itemProfile){
             changeFragment(new ProfileFragment());
@@ -98,9 +101,11 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.closeMenu();
     }
 
+    private String TAG = "MenuActivity";
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override
         public void openMenu() {
+            Log.e(TAG, "openMenu: ");
             Toast.makeText(mContext, "Menu is opened!", Toast.LENGTH_SHORT).show();
         }
 
