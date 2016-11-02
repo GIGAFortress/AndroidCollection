@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="-57"
+            android:textSize="24dp"
+            android:singleLine="true"
+            android:textColor="@color/win10_blue"
+            android:id="@+id/tx_RSSI" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C-ME15-002020"
+                android:textColor="@color/win10_black"
+                android:id="@+id/tx_DeviceName" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8A:8A:8A:8A:8A:8A"
+                android:textColor="@color/win10_green_dark"
+                android:id="@+id/tx_MacAddress" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
