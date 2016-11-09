@@ -23,6 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             short RSSI = 0;
-            if(BluetoothDevice.ACTION_FOUND.equals(action)){
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                     RSSI = intent.getExtras().getShort(BluetoothDevice.EXTRA_RSSI);
@@ -57,27 +58,30 @@ public class MainActivity extends AppCompatActivity
                 discoveryDevices.add(btContext);
                 textViewC21.append("\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
                 textViewC21.append("\n");
-                Log.d("B","\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
+                Log.d("B", "\n" + btContext.name + "\n" + btContext.address + "\nRSSI=" + btContext.RSSI);
             }
         }
     };
+    private Button buttonGetProperty;
+    private TextView textView2;
+    private String TAG = "Test";
 
-    public void startDiscovery(View view){
+    public void startDiscovery(View view) {
         textViewC21.setText("");
-        if(bluetoothAdapter.isEnabled()){
-            if(discoveryDevices != null){
+        if (bluetoothAdapter.isEnabled()) {
+            if (discoveryDevices != null) {
                 discoveryDevices.clear();
             }
             Toast.makeText(MainActivity.this, "startDiscovery", Toast.LENGTH_SHORT).show();
             bluetoothAdapter.startDiscovery();
-            new Thread( new Runnable(){
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try{
+                    try {
                         Thread.sleep(3000);
-                    } catch(InterruptedException e){
+                    } catch (InterruptedException e) {
 
-                    } finally{
+                    } finally {
                         bluetoothAdapter.cancelDiscovery();
 
                         /*此处若不适用UI线程来处理会报错：该线程无法对UI线程进行操作*/
@@ -104,12 +108,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
         final String[] bluetoothNames = new String[discoveryDevices.size()];
-        for(BluetoothDeviceContext device : discoveryDevices) {
+        for (BluetoothDeviceContext device : discoveryDevices) {
             textViewC22.append("\n" + device.name + "\n" + device.address + "\nRSSI=" + device.RSSI + "\n");
         }
     }
 
-    private class BluetoothDeviceContext{
+    private class BluetoothDeviceContext {
         public String name = "";
         public String address = "";
         public short RSSI = 0;
@@ -165,6 +169,15 @@ public class MainActivity extends AppCompatActivity
         textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
         textViewC22 = (TextView) view2.findViewById(R.id.textViewC22);
         textViewC11 = (TextView) view1.findViewById(R.id.textViewC11);
+        textView2 = (TextView) view1.findViewById(R.id.textView2);
+        buttonGetProperty = (Button) view1.findViewById(R.id.buttongetProperty);
+        buttonGetProperty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               textView2.setText(System.getProperty("http.agent"));
+                Log.e(TAG, "onClick: " +System.getProperty("http.agent") );
+            }
+        });
         final List<View> listviews = new ArrayList<View>();
         listviews.add(view1);
         listviews.add(view2);
@@ -204,7 +217,7 @@ public class MainActivity extends AppCompatActivity
         unregisterReceiver(discoveryReceiver);
     }
 
-    public void showToast(View view){
+    public void showToast(View view) {
         Toast.makeText(this, "SHOWTOAST", Toast.LENGTH_SHORT).show();
         textViewC11.setText("Test?!");
     }
