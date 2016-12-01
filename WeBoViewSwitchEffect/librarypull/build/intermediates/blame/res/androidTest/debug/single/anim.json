@@ -8,6 +8,22 @@
         "source": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
     },
     {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
         "merged": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
         "source": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },

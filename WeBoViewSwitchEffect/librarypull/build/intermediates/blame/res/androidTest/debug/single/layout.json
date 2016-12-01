@@ -6,5 +6,13 @@
     {
         "merged": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
         "source": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     }
 ]

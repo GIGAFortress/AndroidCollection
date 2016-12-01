@@ -1,10 +1,18 @@
 [
     {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\src\\main\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
         "merged": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
         "source": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\src\\main\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     },
     {
         "merged": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
         "source": "H:\\Backup\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\src\\main\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "H:\\GIGAFortressCollections\\AndroidCollection\\WeBoViewSwitchEffect\\librarypull\\src\\main\\res\\layout\\pull_to_refresh_header_vertical.xml"
     }
 ]
