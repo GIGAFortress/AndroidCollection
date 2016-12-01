@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.chenlij.myapplication3.view.GridRecyclerView;
 
 import org.w3c.dom.Text;
 
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity
     private Button buttonGetProperty;
     private TextView textView2;
     private String TAG = "Test";
+    private GridRecyclerView gridRecyclerView;
+    private GridLayoutManager layoutManager;
 
     public void startDiscovery(View view) {
         textViewC21.setText("");
@@ -166,21 +172,32 @@ public class MainActivity extends AppCompatActivity
         LayoutInflater lf = getLayoutInflater().from(this);
         View view1 = lf.inflate(R.layout.content_1, null);
         View view2 = lf.inflate(R.layout.content_2, null);
-        textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
-        textViewC22 = (TextView) view2.findViewById(R.id.textViewC22);
+        View view3 = lf.inflate(R.layout.content_3, null);
+
         textViewC11 = (TextView) view1.findViewById(R.id.textViewC11);
         textView2 = (TextView) view1.findViewById(R.id.textView2);
         buttonGetProperty = (Button) view1.findViewById(R.id.buttongetProperty);
         buttonGetProperty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               textView2.setText(System.getProperty("http.agent"));
-                Log.e(TAG, "onClick: " +System.getProperty("http.agent") );
+                textView2.setText(System.getProperty("http.agent"));
+                Log.e(TAG, "onClick: " + System.getProperty("http.agent"));
             }
         });
+
+        textViewC21 = (TextView) view2.findViewById(R.id.textViewC21);
+        textViewC22 = (TextView) view2.findViewById(R.id.textViewC22);
+
+        gridRecyclerView = (GridRecyclerView) view3.findViewById(R.id.recycler_view);
+        gridRecyclerView.setHasFixedSize(true);
+        layoutManager = new GridLayoutManager(this, 2);
+        gridRecyclerView.setLayoutManager(layoutManager);
+        gridRecyclerView.setAdapter(gridAdapter);
+
         final List<View> listviews = new ArrayList<View>();
         listviews.add(view1);
         listviews.add(view2);
+        listviews.add(view3);
         PagerAdapter pagerAdapter = new PagerAdapter() {
             @Override
             public int getCount() {
