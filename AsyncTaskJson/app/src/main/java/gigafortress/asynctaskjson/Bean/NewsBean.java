@@ -1,4 +1,4 @@
-package gigafortress.asynctaskjson;
+package gigafortress.asynctaskjson.Bean;
 
 /**
  * Created by Chenlij on 2016/12/1.
